@@ -1,6 +1,6 @@
 Showcase
 ========
 
-Test- and demonstration grounds for delving new technologies
+Test- and demonstration grounds for delving new technologies.
 
-test
+For more information, see each of the submodules.
