@@ -1,0 +1,22 @@
+{
+  "name": "Meelastic",
+  "description": "Technology prototype using Meetup.com stream, ElasticSearch, Node and Angular",
+  "version": "1.0.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-resource": "~1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "html5-boilerplate": "~4.3.0",
+    "bootstrap": "3.2.0",
+    "angular-websocket": "~0.0.5",
+    "fontawesome": "~4.2.0",
+    "d3": "~3.4.13",
+    "nvd3": "~1.1.15-beta",
+    "angularjs-nvd3-directives": "~0.0.7"
+  }
+}

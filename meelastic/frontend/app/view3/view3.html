@@ -1,0 +1,49 @@
+<h1 class="text-success">Live top lists </h1>
+
+<div class="col-lg-2">
+    <div class="list-group">
+        <a href="#" class="list-group-item active">
+            By country
+        </a>
+        <a href="#" class="list-group-item" ng-repeat="item in topListCountry.facets.tags.terms">
+            <span class="badge alert-success">{{item.count}}</span>
+            {{item.term}}
+        </a>
+    </div>
+</div>
+
+<div class="col-lg-2">
+    <div class="list-group">
+        <a href="#" class="list-group-item active">
+            By city
+        </a>
+        <a href="#" class="list-group-item" ng-repeat="item in topListCity.facets.tags.terms">
+            <span class="badge alert-info">{{item.count}}</span>
+            {{item.term}}
+        </a>
+    </div>
+</div>
+
+<div class="col-lg-4">
+    <div class="list-group">
+        <a href="#" class="list-group-item active">
+            By group
+        </a>
+        <a href="#" class="list-group-item" ng-repeat="item in topListGroupName.facets.tags.terms">
+            <span class="badge alert-danger">{{item.count}}</span>
+            {{item.term}}
+        </a>
+    </div>
+</div>
+
+<div class="col-lg-4">
+    <div class="list-group">
+        <a href="#" class="list-group-item active">
+            By event
+        </a>
+        <a href="#" class="list-group-item" ng-repeat="item in topListEventName.facets.tags.terms">
+            <span class="badge">{{item.count}}</span>
+            {{item.term}}
+        </a>
+    </div>
+</div>

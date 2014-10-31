@@ -1,0 +1,27 @@
+<h1 class="text-success">Live stream <i class="fa fa-flash"/> {{elasticCounter}} </h1>
+
+<table class="table table-hover table-condensed">
+    <thead>
+    <tr>
+        <th>Rsvp</th>
+        <th>Member</th>
+        <th>Photo</th>
+        <th>Group</th>
+        <th>Event</th>
+        <th>Time</th>
+        <th>City</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="elasticRow in elasticData">
+        <td>{{elasticRow.response}}</td>
+        <td>{{elasticRow.member.member_name}}</td>
+        <td><img src="{{elasticRow.member.photo}}"/></td>
+        <td>{{elasticRow.group.group_name}}</td>
+        <td>{{elasticRow.event.event_name}}</td>
+        <td>{{elasticRow.event.time | date:'short'}}</td>
+        <td>{{elasticRow.group.group_city}}</td>
+    </tr>
+
+    </tbody>
+</table>
