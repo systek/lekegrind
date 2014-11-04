@@ -1,31 +1,10 @@
+
 <h1 class="text-success">Live charts (not implemented) </h1>
 
 <div ng-controller="View4Ctrl">
 
-    <div class="col-lg-6">
-        <nvd3-line-chart
-                data="exampleLine"
-                showXAxis="true"
-                showYAxis="true"
-                tooltips="true"
-                interactive="true"
-                height="300"
-                >
-        </nvd3-line-chart>
+    <div class="col-md-6">
+        <nvd3 options="options" data="data"></nvd3>
     </div>
-
-    <div class="col-lg-6">
-        <nvd3-discrete-bar-chart
-                data="exampleBar"
-                id="exampleId"
-                showXAxis="true"
-                showYAxis="true"
-                xAxisTickFormat="xAxisTickFormatFunction()"
-                height="300"
-                tooltips="true">
-            <svg></svg>
-        </nvd3-discrete-bar-chart>
-    </div>
-
 
 </div>

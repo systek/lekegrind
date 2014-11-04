@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.view4', ['ngRoute', 'nvd3ChartDirectives'])
+angular.module('myApp.view4', ['ngRoute', 'nvd3'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/view4', {
@@ -11,54 +11,70 @@ angular.module('myApp.view4', ['ngRoute', 'nvd3ChartDirectives'])
 
     .controller('View4Ctrl', function ($scope, $http, elasticStatService, $timeout) {
 
-        $scope.countryData = { "key": "Countries", "values": [] };
+        $scope.options = {
+            chart: {
+                type: 'lineChart',
+                height: 300,
+                margin: {
+                    top: 20,
+                    right: 20,
+                    bottom: 60,
+                    left: 50
+                },
+                x: function (d) {
+                    return d[0];
+                },
+                y: function (d) {
+                    return d[1];
+                },
+                showValues: true,
+                valueFormat: function (d) {
+                    return d3.format(',.1f')(d);
+                },
+                transitionDuration: 0,
+                xAxis: {
+                    axisLabel: 'X Axis',
+                    tickFormat: function (d) {
+                        return d3.time.format('%x')(new Date(d))
+                    },
+                    rotateLabels: 20,
+                    showMaxMin: true
+                },
+                yAxis: {
+                    axisLabel: 'Y Axis',
+                    axisLabelDistance: 35
 
-        $scope.exampleLine = [
+                }
+            }
+        };
+
+        $scope.data = [
             {
-                "key": "Series 1",
-                "values": [
-                    [ 1025409600000 , 0] ,
-                    [ 1028088000000 , -6.3382185140371] ,
-                    [ 1030766400000 , -5.9507873460847] ,
-                    [ 1033358400000 , -11.569146943813] ,
-                    [ 1036040400000 , -5.4767332317425] ,
-                    [ 1038632400000 , 0.50794682203014] ,
-                    [ 1041310800000 , -5.5310285460542] ,
-                    [ 1043989200000 , -5.7838296963382] ,
-                    [ 1046408400000 , -7.3249341615649] ,
-                    [ 1049086800000 , -6.7078630712489] ,
-                    [ 1051675200000 , 0.44227126150934] ,
-
+                "key": "Quantity",
+                "bar": true,
+                values: [
+                    [new Date().getTime(), 0]
                 ]
             }
         ];
 
+        var poll = function () {
+            $timeout(function () {
+                fetchData();
+                poll();
+            }, 2000);
+        };
+        poll();
 
-        $scope.exampleBar = [
-            {
-                "key": "Series 1",
-                "values": [
-                    [ 1025409600000 , 0] ,
-                    [ 1028088000000 , -6.3382185140371] ,
-                    [ 1030766400000 , -5.9507873460847] ,
-                    [ 1033358400000 , -11.569146943813] ,
-                    [ 1036040400000 , -5.4767332317425] ,
-                    [ 1038632400000 , 0.50794682203014] ,
-                    [ 1041310800000 , -5.5310285460542] ,
-                    [ 1043989200000 , -5.7838296963382] ,
-                    [ 1046408400000 , -7.3249341615649] ,
-                    [ 1049086800000 , -6.7078630712489] ,
-                    [ 1051675200000 , 0.44227126150934] ,
-                    [ 1054353600000 , 7.2481659343222] ,
-                    [ 1056945600000 , 9.2512381306992]
-                ]
-            }
-        ];
+        var fetchData = function () {
+            elasticStatService.findCount().success(
+                function (data) {
+                    $scope.data[0].values.push([new Date().getTime(), data]);
+                    if ($scope.data[0].values.length > 20) {
+                        $scope.data[0].values.shift();
+                    }
+                });
 
-        $scope.xAxisTickFormatFunction = function () {
-            return function (d) {
-                return d3.time.format('%b')(new Date(d));
-            }
         }
 
     });

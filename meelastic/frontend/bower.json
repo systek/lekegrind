@@ -16,7 +16,6 @@
     "angular-websocket": "~0.0.5",
     "fontawesome": "~4.2.0",
     "d3": "~3.4.13",
-    "nvd3": "~1.1.15-beta",
-    "angularjs-nvd3-directives": "~0.0.7"
+    "angular-nvd3": "~0.0.9"
   }
 }
